@@ -2,12 +2,13 @@ const { Rental, validate } = require("../models/rental");
 const { Movie } = require("../models/movie");
 const { Customer } = require("../models/customer");
 const auth = require("../middleware/auth");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const Fawn = require("fawn");
 const express = require("express");
 const router = express.Router();
 
-Fawn.init(mongoose);
+// Fawn.init(mongoose);
+Fawn.init("mongodb://127.0.0.1:27017/vidly");
 
 router.get("/", auth, async (req, res) => {
   const rentals = await Rental.find()
